@@ -1,5 +1,10 @@
 language: rust
 
+sudo: true
+before_install:
+    - sudo apt-get install -qq libcurl4-openssl-dev libelf-dev libdw-dev ruby-dev build-essential rpm
+    - gem install fpm
+
 script:
 - cargo build
 - cargo test
