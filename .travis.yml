@@ -15,3 +15,9 @@ after_success: |
   sudo make install &&
   cd ../.. &&
   kcov --coveralls-id=$TRAVIS_JOB_ID --exclude-pattern=/.cargo target/kcov target/debug/rust_coverage_sample-*;
+  - cargo clean
+  - cargo build --release
+  # Below need information about actual executable - not yet completed 20150406
+  # Still todo add --deb-init FILEPATH >>> (deb only) Add FILEPATH as an init script
+  # Still todo path to install to >>> --package OUTPUT
+  - fpm -s dir -t deb -C target/release --name maidsafe_sample --version 0.0.1 --iteration 1 --depends debian-dependency1 --description "Very simple example"

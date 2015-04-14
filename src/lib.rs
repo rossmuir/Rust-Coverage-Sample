@@ -1,19 +1,22 @@
-pub mod stud;
-pub mod faculty;
+// This code is editable and runnable!
+fn main() {
+    // A simple integer calculator:
+    // `+` or `-` means add or subtract by 1
+    // `*` or `/` means multiply or divide by 2
 
-pub fn add(a: i32, b: i32) -> isize {
-	(a + b) as isize
-}
+    let program = "+ + * - /";
+    let mut accumulator = 0;
 
-pub fn sub(a: i32, b: i32) -> isize {
-	(a + b) as isize
-}
+    for token in program.chars() {
+        match token {
+            '+' => accumulator += 1,
+            '-' => accumulator -= 1,
+            '*' => accumulator *= 2,
+            '/' => accumulator /= 2,
+            _ => { /* ignore everything else */ }
+        }
+    }
 
-fn add_test() {
-	assert_eq!(10isize, add(4, 6));
-}
-
-#[test]
-fn test() {
-	add_test();
+    println!("The program \"{}\" calculates the value {}",
+              program, accumulator);
 }
